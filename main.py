@@ -1,1 +1,1 @@
-print("ouuuh ala saaaadi")
+print("fadddyt")
