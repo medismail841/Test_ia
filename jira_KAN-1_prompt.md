@@ -1,10 +1,10 @@
 # Implementation Task
 
 ## Objective
-Create a Python script that prints "hello" to the console.
+Generate a Python script that prints "hello" to the console.
 
 ## Context
-The goal is to implement a basic Python functionality as specified in ticket KAN-1 to ensure the environment can execute simple print statements.
+The goal is to implement a basic Python functionality as per ticket KAN-1 to ensure the environment can execute simple print statements.
 
 ## Requirements
 - Use the Python programming language.
@@ -20,7 +20,7 @@ The goal is to implement a basic Python functionality as specified in ticket KAN
 - [ ] The code prints exactly "hello" when executed.
 
 ## Validation
-1. Execute the script using the command: `python hello.py`.
+1. Execute the script using a Python interpreter: `python hello.py`.
 2. Verify that the console output is exactly `hello`.
 
 ## Final Report
