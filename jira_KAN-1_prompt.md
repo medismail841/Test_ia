@@ -1,29 +1,28 @@
 # Implementation Task
 
 ## Objective
-Create a Python script that prints the phrase "ll 7ayet 7elwa bass nefhamha" to the console.
+Create a Python script that prints "hello" to the console.
 
 ## Context
-The goal is to implement a simple output functionality as specified in ticket KAN-1.
+The goal is to implement a basic Python functionality as specified in ticket KAN-1 to ensure the environment can execute simple print statements.
 
 ## Requirements
 - Use the Python programming language.
-- The script must output the exact string: `ll 7ayet 7elwa bass nefhamha`.
+- The code must output the exact string "hello".
 
 ## Implementation
-1. Create a new Python file (e.g., `main.py`).
-2. Implement a `print()` statement containing the required string.
-3. Ensure the script is executable.
+1. Create a new Python file (e.g., `hello.py`).
+2. Implement a `print` statement that outputs "hello".
+3. Ensure the file follows standard Python PEP 8 formatting.
 
 ## Acceptance Criteria
-- [ ] A Python script is created.
-- [ ] The script prints exactly the string "ll 7ayet 7elwa bass nefhamha".
-- [ ] The script executes without errors.
+- [ ] The generated code is valid Python syntax.
+- [ ] The code prints exactly "hello" when executed.
 
 ## Validation
-1. Run the script using a Python interpreter: `python main.py`.
-2. Verify that the console output matches the required string exactly.
+1. Execute the script using the command: `python hello.py`.
+2. Verify that the console output is exactly `hello`.
 
 ## Final Report
-- List the created file.
+- List the created/modified files.
 - Confirm the output of the execution.
