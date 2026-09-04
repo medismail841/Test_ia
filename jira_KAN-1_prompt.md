@@ -1,24 +1,23 @@
 # Implementation Task
 
 ## Objective
-Create a Python script that prints "hello" to the console.
+Generate a Python script that prints "hello" to the console.
 
 ## Context
-The goal is to implement a basic Python functionality as per ticket KAN-1 to ensure the environment is capable of executing simple print operations.
+The goal is to implement a basic Python functionality as per ticket KAN-1 to ensure the environment can execute simple print statements.
 
 ## Requirements
-- Develop a Python script.
-- The script must output the exact string "hello".
+- Use the Python programming language.
+- The code must output the exact string "hello".
 
 ## Implementation
-1. Inspect the project structure to determine the appropriate location for the script.
-2. Create a new Python file (e.g., `hello.py`).
-3. Implement a `print("hello")` statement within the file.
-4. Ensure the code follows Python idiomatic standards.
+1. Create a new Python file (e.g., `hello.py`).
+2. Implement a `print` statement that outputs "hello".
+3. Ensure the file follows standard Python PEP 8 formatting.
 
 ## Acceptance Criteria
-- [ ] A Python file is created.
-- [ ] Executing the script outputs exactly "hello" to the standard output.
+- [ ] The generated code is valid Python syntax.
+- [ ] The code prints exactly "hello" when executed.
 
 ## Validation
 1. Run the script using the command: `python hello.py`.
