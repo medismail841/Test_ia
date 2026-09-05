@@ -13,16 +13,16 @@ The goal is to implement a basic Python functionality as per ticket KAN-1 to ens
 ## Implementation
 1. Create a new Python file (e.g., `hello.py`).
 2. Implement a `print` statement that outputs "hello".
-3. Ensure the file follows standard Python PEP 8 formatting.
+3. Ensure the file follows PEP 8 coding standards.
 
 ## Acceptance Criteria
 - [ ] The generated code is valid Python syntax.
 - [ ] The code prints exactly "hello" when executed.
 
 ## Validation
-1. Run the script using the command: `python hello.py`.
+1. Execute the script using the command: `python hello.py`.
 2. Verify that the console output is exactly `hello`.
 
 ## Final Report
-- List the created file.
+- List the created/modified files.
 - Confirm the output of the execution.
