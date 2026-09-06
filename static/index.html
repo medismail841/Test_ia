@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator App</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <section id="auth-view" class="view" hidden>
+      <h1>Welcome</h1>
+      <p class="subtitle">Please sign in or create an account to use the calculator.</p>
+
+      <div class="error-banner" id="auth-error" hidden></div>
+
+      <div class="tabs">
+        <button type="button" id="tab-login" class="tab active">Login</button>
+        <button type="button" id="tab-register" class="tab">Sign up</button>
+      </div>
+
+      <form id="login-form" class="form" novalidate>
+        <label for="login-username">Username</label>
+        <input type="text" id="login-username" name="username" autocomplete="username" required>
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" name="password" autocomplete="current-password" required>
+        <button type="submit" class="btn primary">Login</button>
+      </form>
+
+      <form id="register-form" class="form" hidden novalidate>
+        <label for="register-username">Username</label>
+        <input type="text" id="register-username" name="username" autocomplete="username" required>
+        <label for="register-password">Password</label>
+        <input type="password" id="register-password" name="password" autocomplete="new-password" required>
+        <button type="submit" class="btn primary">Sign up</button>
+      </form>
+    </section>
+
+    <section id="calc-view" class="view" hidden>
+      <div class="topbar">
+        <span class="greeting">Hello, <strong id="calc-username"></strong></span>
+        <button type="button" id="logout-btn" class="btn secondary">Logout</button>
+      </div>
+      <h1>Calculator</h1>
+
+      <div class="calculator">
+        <div class="display" id="calc-display" aria-live="polite">0</div>
+        <div class="calc-error" id="calc-error" hidden></div>
+        <div class="keypad">
+          <button type="button" class="key clear" data-action="clear">C</button>
+          <button type="button" class="key" data-action="backspace">&#9003;</button>
+          <button type="button" class="key operator" data-action="op" data-value="/">&divide;</button>
+          <button type="button" class="key operator" data-action="op" data-value="*">&times;</button>
+          <button type="button" class="key" data-action="digit" data-value="7">7</button>
+          <button type="button" class="key" data-action="digit" data-value="8">8</button>
+          <button type="button" class="key" data-action="digit" data-value="9">9</button>
+          <button type="button" class="key operator" data-action="op" data-value="-">-</button>
+          <button type="button" class="key" data-action="digit" data-value="4">4</button>
+          <button type="button" class="key" data-action="digit" data-value="5">5</button>
+          <button type="button" class="key" data-action="digit" data-value="6">6</button>
+          <button type="button" class="key operator" data-action="op" data-value="+">+</button>
+          <button type="button" class="key" data-action="digit" data-value="1">1</button>
+          <button type="button" class="key" data-action="digit" data-value="2">2</button>
+          <button type="button" class="key" data-action="digit" data-value="3">3</button>
+          <button type="button" class="key equals" data-action="equals">=</button>
+          <button type="button" class="key" data-action="digit" data-value="0">0</button>
+          <button type="button" class="key" data-action="decimal">.</button>
+          <button type="button" class="key operator" data-action="negate">+/-</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/calculator.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
