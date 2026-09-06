@@ -4,47 +4,47 @@
 Create a calculator application featuring a JavaScript-based user interface and a secure authentication page to restrict access.
 
 ## Context
-The application requires a full-stack implementation including a frontend for the UI, a backend for authentication and session management, and a data store for user credentials.
+The application requires a full-stack implementation including a frontend for the UI, a backend for authentication and session management, and a database to store user credentials.
 
 ## Requirements
-- **Authentication System**: A login page that validates user credentials.
-- **Session Management**: Mechanism to ensure the calculator is only accessible to authenticated users.
-- **Calculator Engine**: Logic to perform basic mathematical operations.
+- **Authentication System**: A login page that validates user credentials against a database.
+- **Session Management**: Implementation of a mechanism (e.g., JWT or sessions) to ensure the calculator is only accessible to authenticated users.
+- **Calculator Logic**: A functional engine capable of performing basic mathematical operations.
 - **User Interface**: 
-    - A login form.
-    - A calculator interface with a display and buttons for digits and operators.
-- **Data Storage**: Storage for user credentials (usernames and hashed passwords).
+    - A login form for authentication.
+    - A calculator interface with a display screen and buttons for digits and operators.
+- **Database**: A user table to store usernames and hashed passwords.
 
 ## Implementation
-1. **Backend (Python/Flask)**:
-    - Implement a Flask server to handle routing and authentication.
-    - Create an `/auth` endpoint to verify credentials and issue a session token/cookie.
-    - Implement a middleware or decorator to protect the calculator route.
-    - Use a secure hashing library (e.g., `werkzeug.security`) for password storage.
-2. **Database**:
-    - Implement a simple SQLite database to store user accounts.
-3. **Frontend (HTML/CSS/JS)**:
-    - Create `login.html` with a form for username and password.
-    - Create `calculator.html` with a grid layout for the calculator.
-    - Implement `calculator.js` to handle the mathematical logic and UI updates.
-    - Implement `auth.js` to handle the login request and session redirection.
+1. **Backend Setup**:
+    - Use Python (Flask or FastAPI) to create the server.
+    - Implement a database schema for users (username, hashed_password).
+    - Create an authentication endpoint (`/login`) that verifies credentials and returns a session token.
+    - Create a protected route/middleware to verify the token before serving the calculator logic or page.
+2. **Frontend Setup**:
+    - Create an HTML/CSS/JS login page.
+    - Create an HTML/CSS/JS calculator page.
+    - Implement JavaScript logic to handle the calculator's arithmetic operations and UI updates.
+    - Implement client-side routing/redirection to ensure unauthenticated users are sent to the login page.
+3. **Integration**:
+    - Connect the frontend login form to the backend authentication endpoint.
+    - Store the session token securely (e.g., HttpOnly cookie or LocalStorage).
 
 ## Acceptance Criteria
-- [ ] User is presented with an authentication page upon accessing the application.
-- [ ] User cannot access the calculator without successful authentication.
+- [ ] User is redirected to an authentication page upon accessing the application.
+- [ ] User cannot access the calculator without valid credentials.
 - [ ] User can successfully log in with valid credentials.
-- [ ] The calculator interface is rendered after login.
-- [ ] The calculator performs basic mathematical operations correctly.
+- [ ] Calculator interface is displayed after successful authentication.
+- [ ] Calculator performs basic mathematical operations correctly.
 
 ## Validation
-1. **Auth Test**: Attempt to access the calculator URL directly without logging in; verify redirection to the login page.
-2. **Login Test**: Enter invalid credentials; verify that access is denied.
-3. **Access Test**: Enter valid credentials; verify redirection to the calculator interface.
-4. **Functional Test**: Perform a series of calculations (addition, subtraction, multiplication, division) and verify the results are correct.
+- **Authentication Test**: Attempt to access the calculator URL directly without logging in; verify redirection to login.
+- **Login Test**: Enter invalid credentials and verify access is denied; enter valid credentials and verify access is granted.
+- **Functional Test**: Perform a series of calculations (addition, subtraction, multiplication, division) and verify the results are correct.
+- **Security Test**: Verify that passwords are stored as hashes in the database and not in plain text.
 
 ## Final Report
-The final delivery must include:
-- The backend server code.
-- The database schema/initialization script.
-- The frontend HTML, CSS, and JavaScript files.
-- A brief summary of the changes made and the files created.
+The final report must include:
+- A list of all created/modified files.
+- Confirmation that all acceptance criteria are met.
+- Instructions on how to initialize the database and run the application.
