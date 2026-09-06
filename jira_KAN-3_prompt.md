@@ -1,50 +1,63 @@
 # Implementation Task
 
-## Objective
-Create a calculator application featuring a JavaScript-based user interface and a secure authentication page to restrict access.
+Implement Jira ticket KAN-3 in the target project.
 
-## Context
-The application requires a full-stack implementation including a frontend for the UI, a backend for authentication and session management, and a database to store user credentials.
+## Ticket
+complex application
 
-## Requirements
-- **Authentication System**: A login page that validates user credentials against a database.
-- **Session Management**: Implementation of a mechanism (e.g., JWT or sessions) to ensure the calculator is only accessible to authenticated users.
-- **Calculator Logic**: A functional engine capable of performing basic mathematical operations.
-- **User Interface**: 
-    - A login form for authentication.
-    - A calculator interface with a display screen and buttons for digits and operators.
-- **Database**: A user table to store usernames and hashed passwords.
+complicated task:
 
-## Implementation
-1. **Backend Setup**:
-    - Use Python (Flask or FastAPI) to create the server.
-    - Implement a database schema for users (username, hashed_password).
-    - Create an authentication endpoint (`/login`) that verifies credentials and returns a session token.
-    - Create a protected route/middleware to verify the token before serving the calculator logic or page.
-2. **Frontend Setup**:
-    - Create an HTML/CSS/JS login page.
-    - Create an HTML/CSS/JS calculator page.
-    - Implement JavaScript logic to handle the calculator's arithmetic operations and UI updates.
-    - Implement client-side routing/redirection to ensure unauthenticated users are sent to the login page.
-3. **Integration**:
-    - Connect the frontend login form to the backend authentication endpoint.
-    - Store the session token securely (e.g., HttpOnly cookie or LocalStorage).
+create a calculator applicarion with a js interface and with an authentification page
 
-## Acceptance Criteria
+## Technical Analysis
+# Technical Analysis
+
+## 1. Problem to solve
+The goal is to develop a calculator application that includes a JavaScript-based user interface and a secure authentication layer to restrict access to the calculator.
+
+## 2. Expected behavior
+The user should first encounter an authentication page. Upon successful authentication, the user should be granted access to a functional calculator interface where they can perform mathematical operations.
+
+## 3. Technical requirements
+- Implementation of a user authentication system (login mechanism).
+- Implementation of a calculator logic engine.
+- Development of a JavaScript-based frontend interface.
+- Session management to ensure the calculator is only accessible after authentication.
+
+## 4. Frontend impact
+The frontend requires significant modification/creation:
+- An authentication page (login form).
+- A calculator interface (buttons for digits, operators, and a display screen).
+- Client-side logic to handle user input and display results.
+
+## 5. Backend impact
+The backend requires modification/creation:
+- Authentication endpoints to validate user credentials.
+- Session or token management (e.g., JWT or cookies) to maintain the authenticated state.
+- (Optional/Unknown) Backend logic for calculations if not handled entirely on the client side.
+
+## 6. Database impact
+The database requires modification/creation:
+- A storage mechanism for user credentials (usernames and hashed passwords).
+
+## 7. Existing functionality to reuse
+No specific existing functionality identified.
+
+## 8. Acceptance criteria
 - [ ] User is redirected to an authentication page upon accessing the application.
 - [ ] User cannot access the calculator without valid credentials.
 - [ ] User can successfully log in with valid credentials.
-- [ ] Calculator interface is displayed after successful authentication.
-- [ ] Calculator performs basic mathematical operations correctly.
+- [ ] The calculator interface is displayed after successful login.
+- [ ] The calculator performs basic mathematical operations correctly.
 
-## Validation
-- **Authentication Test**: Attempt to access the calculator URL directly without logging in; verify redirection to login.
-- **Login Test**: Enter invalid credentials and verify access is denied; enter valid credentials and verify access is granted.
-- **Functional Test**: Perform a series of calculations (addition, subtraction, multiplication, division) and verify the results are correct.
-- **Security Test**: Verify that passwords are stored as hashes in the database and not in plain text.
+## 9. Potential risks
+- **Security:** Lack of specification on password encryption and session security.
+- **Scope Ambiguity:** The ticket does not specify the "complexity" of the calculator (e.g., basic arithmetic vs. scientific functions).
+- **Authentication Method:** It is unknown if the authentication should be against a local database, an external provider, or a hardcoded set of credentials.
 
-## Final Report
-The final report must include:
-- A list of all created/modified files.
-- Confirmation that all acceptance criteria are met.
-- Instructions on how to initialize the database and run the application.
+## Required subtasks
+1. Implement User Authentication Page: Create a login page with a username and password form. Implement client-side validation and a mock authentication service that redirects the user to the calculator interface upon successful login.
+2. Develop Calculator Core Logic: Create a JavaScript module that handles mathematical operations (addition, subtraction, multiplication, division). Ensure the logic supports floating-point numbers and handles division by zero errors.
+3. Build Calculator User Interface: Develop the HTML/CSS layout for the calculator, including a display screen and a grid of buttons for numbers and operators. Connect the UI buttons to the calculator core logic functions.
+
+Implement the required changes, preserve existing behavior, and verify the result with the appropriate project tests.
