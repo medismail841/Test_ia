@@ -66,6 +66,21 @@ def test_login_with_invalid_credentials_denied():
     assert WAIT not in res.cookies
 
 
+def test_auth_endpoint_with_valid_credentials():
+    _register("ivan", "secret123")
+    res = client.post("/auth", json={"username": "ivan", "password": "secret123"})
+    assert res.status_code == 200
+    assert res.json()["username"] == "ivan"
+    assert res.cookies[WAIT] != ""
+
+
+def test_auth_endpoint_with_invalid_credentials_denied():
+    _register("judy", "secret123")
+    res = client.post("/auth", json={"username": "judy", "password": "badpass"})
+    assert res.status_code == 401
+    assert WAIT not in res.cookies
+
+
 def test_calculator_redirects_when_not_authenticated():
     anonymous = TestClient(main.app)
     res = anonymous.get("/calculator", follow_redirects=False)

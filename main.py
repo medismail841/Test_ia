@@ -5,6 +5,7 @@ import secrets
 import sqlite3
 import sys
 from datetime import datetime, timedelta, timezone
+from functools import wraps
 from pathlib import Path
 
 import jwt
@@ -96,6 +97,20 @@ def get_authenticated_user(request: Request) -> str | None:
     return decode_token(token)
 
 
+def require_login(redirect_url: str = "/"):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(request: Request, *args, **kwargs):
+            username = get_authenticated_user(request)
+            if username is None:
+                return RedirectResponse(url=redirect_url, status_code=302)
+            return func(request, *args, **kwargs)
+
+        return wrapper
+
+    return decorator
+
+
 app = FastAPI(title="Calculator App")
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
@@ -167,6 +182,22 @@ def login(body: Credentials, response: Response):
     return {"message": "Login successful.", "username": username}
 
 
+@app.post("/auth")
+def auth(body: Credentials, response: Response):
+    username = body.username.strip()
+    with _get_db() as conn:
+        row = conn.execute(
+            "SELECT hashed_password FROM users WHERE username = ?", (username,)
+        ).fetchone()
+
+    valid = row is not None and verify_password(body.password, row["hashed_password"])
+    if not valid:
+        raise HTTPException(status_code=401, detail="Invalid username or password.")
+
+    _set_auth_cookie(response, username)
+    return {"message": "Authentication successful.", "username": username}
+
+
 @app.post("/logout")
 def logout(response: Response):
     response.delete_cookie(key=TOKEN_COOKIE_NAME, path="/")
@@ -182,10 +213,8 @@ def auth_check(request: Request):
 
 
 @app.get("/calculator")
+@require_login()
 def calculator(request: Request):
-    username = get_authenticated_user(request)
-    if username is None:
-        return RedirectResponse(url="/")
     return FileResponse(STATIC_DIR / "index.html")
 
 
