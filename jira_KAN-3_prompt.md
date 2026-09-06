@@ -1,64 +1,50 @@
 # Implementation Task
 
-Implement Jira ticket KAN-3 in the target project.
+## Objective
+Create a calculator application featuring a JavaScript-based user interface and a secure authentication page to restrict access.
 
-## Ticket
-complex application
+## Context
+The application requires a full-stack implementation consisting of a frontend for the UI, a backend for authentication and session management, and a data store for user credentials.
 
-complicated task:
+## Requirements
+- **Authentication System**: A login page that validates user credentials.
+- **Session Management**: Mechanism to ensure the calculator is only accessible to authenticated users.
+- **Calculator Engine**: Logic to perform basic mathematical operations.
+- **User Interface**: 
+    - A login form for authentication.
+    - A calculator interface with a display screen and buttons for digits and operators.
+- **Data Storage**: Storage for usernames and hashed passwords.
 
-create a calculator applicarion with a js interface and with an authentification page
+## Implementation
+1. **Backend Setup**:
+    - Use Python (Flask or FastAPI) to create the server.
+    - Implement an authentication endpoint to verify credentials.
+    - Implement session management (e.g., JWT or secure cookies).
+    - Create a simple database or secure file store for user credentials with password hashing.
+2. **Frontend Development**:
+    - Create an HTML/CSS/JS login page.
+    - Create an HTML/CSS/JS calculator interface.
+    - Implement client-side logic to handle button clicks, update the display, and communicate with the backend for authentication.
+3. **Integration**:
+    - Protect the calculator route/view so it redirects unauthenticated users to the login page.
+    - Connect the calculator UI to the calculation logic.
 
-## Technical Analysis
-# Technical Analysis
-
-## 1. Problem to solve
-The goal is to develop a calculator application that includes a JavaScript-based user interface and a secure authentication layer to restrict access to the calculator.
-
-## 2. Expected behavior
-Users should first encounter an authentication page. Upon successful authentication, they should be granted access to a calculator interface where they can perform mathematical operations.
-
-## 3. Technical requirements
-- Implementation of a user authentication system (login/identity verification).
-- Implementation of a calculator logic engine.
-- Development of a JavaScript-based frontend interface.
-- Session management to maintain the authenticated state.
-
-## 4. Frontend impact
-The frontend requires significant modification/creation:
-- An authentication page (login form).
-- A calculator interface (buttons for digits, operators, and a display screen).
-- Client-side logic to handle user input and interact with the calculator engine.
-
-## 5. Backend impact
-The backend requires modification/creation:
-- Authentication endpoints to validate user credentials.
-- Logic to handle session or token management.
-- (Optional/Unknown) API endpoints for calculator operations if calculations are not performed client-side.
-
-## 6. Database impact
-The database requires modification/creation:
-- A storage mechanism for user credentials (e.g., usernames and hashed passwords).
-
-## 7. Existing functionality to reuse
-No specific existing functionality identified.
-
-## 8. Acceptance criteria
+## Acceptance Criteria
 - [ ] User is redirected to an authentication page upon accessing the application.
 - [ ] User cannot access the calculator without successful authentication.
-- [ ] User can successfully log in with valid credentials.
-- [ ] Calculator interface is displayed after successful login.
-- [ ] Calculator performs basic mathematical operations correctly.
+- [ ] User can log in with valid credentials.
+- [ ] The calculator interface is rendered after login.
+- [ ] The calculator performs basic mathematical operations correctly.
 
-## 9. Potential risks
-- **Security**: Lack of specification on password hashing or token-based authentication (JWT/Sessions).
-- **Scope Ambiguity**: The ticket does not specify the "complexity" of the calculator (basic arithmetic vs. scientific).
-- **User Management**: It is unknown if a user registration system is required or if accounts are pre-provisioned.
-- **State Management**: Handling the transition between the auth page and the calculator page.
+## Validation
+- Verify that accessing the calculator URL without a session redirects to `/login`.
+- Verify that entering incorrect credentials prevents access.
+- Verify that entering correct credentials grants access to the calculator.
+- Test basic arithmetic operations (addition, subtraction, multiplication, division) on the calculator interface.
 
-## Required subtasks
-1. Implement User Authentication Page: Create a login page with a username and password form. Implement client-side validation and a mock authentication service that redirects the user to the calculator interface upon successful login.
-2. Develop Calculator Core Logic: Implement a JavaScript class or module that handles basic arithmetic operations (addition, subtraction, multiplication, division). Ensure the logic handles edge cases such as division by zero.
-3. Build Calculator User Interface: Create the HTML/CSS layout for the calculator, including a display screen and a grid of buttons. Connect the UI buttons to the calculator core logic to display results in real-time.
-
-Implement the required changes, preserve existing behavior, and verify the result with the appropriate project tests.
+## Final Report
+The final output must include:
+- The backend source code for authentication and session handling.
+- The frontend source code for the login and calculator pages.
+- Documentation on how to initialize the user database.
+- A summary of the files created and modified.
